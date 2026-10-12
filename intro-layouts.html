@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intro Layout Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+<style>
+  :root { --ink:#17211f; --paper:#f4f1ea; --accent:#9c7a1f; --gold:#8a6a14; --line:#cfc9be; --muted:#68716c; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#e9e5db; color:var(--ink); font-family:"DM Sans",sans-serif; }
+  .bar { position:sticky; top:0; z-index:50; display:flex; gap:14px; align-items:center; padding:14px 30px; background:rgba(23,33,31,.92); color:var(--paper); font:11px "DM Mono",monospace; letter-spacing:.04em; }
+  .bar b { color:#d4b055; font-weight:500; }
+  .mock { min-height:100vh; max-width:1280px; margin:0 auto; position:relative; border:1px solid var(--line); background:var(--paper); }
+  .tag { position:absolute; top:20px; left:26px; color:var(--muted); font:11px "DM Mono",monospace; letter-spacing:.05em; text-transform:uppercase; }
+  h1 { font-family:"Playfair Display",serif; font-weight:700; letter-spacing:-.015em; margin:0; }
+  .eyebrow { color:var(--gold); font:12px "DM Mono",monospace; text-transform:uppercase; letter-spacing:.06em; margin:0 0 18px; }
+
+  /* V1 · Asymmetrical (current) */
+  .v1 { display:grid; grid-template-columns:minmax(0,3fr) minmax(230px,1fr); gap:68px; align-items:end; padding:110px 56px 80px; }
+  .v1 h1 { font-size:clamp(44px,5.6vw,76px); line-height:1.02; }
+  .v1 h1 em { color:var(--gold); font-style:italic; }
+  .v1 .foot { margin-top:34px; max-width:460px; color:var(--muted); font-size:17px; }
+  .v1 .cta { margin-top:26px; }
+  .v1 .cta a { color:var(--gold); font:500 15px "DM Mono",monospace; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; }
+  .v1 .portrait { margin:0; }
+  .v1 .portrait img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center top; box-shadow:0 28px 50px -16px rgba(23,33,31,.32); }
+
+  /* V2 · Centered editorial */
+  .v2 { display:flex; flex-direction:column; align-items:center; text-align:center; padding:120px 40px 84px; }
+  .v2 h1 { font-size:clamp(46px,6vw,84px); line-height:1.05; }
+  .v2 h1 em { color:var(--gold); font-style:italic; }
+  .v2 .sub { max-width:520px; margin:22px auto 0; color:var(--muted); font-size:17px; }
+  .v2 .portrait { margin:52px auto 0; width:min(420px,64vw); }
+  .v2 .portrait img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center top; border:1px solid var(--line); padding:10px; background:#fff; box-shadow:0 22px 44px -18px rgba(23,33,31,.3); }
+  .v2 .mono { margin:18px 0 0; color:var(--gold); font:12px "DM Mono",monospace; letter-spacing:.14em; text-transform:uppercase; }
+
+  /* V3 · Dark full-bleed */
+  .v3 { background:var(--ink); color:var(--paper); display:grid; grid-template-columns:minmax(0,2fr) minmax(280px,1fr); gap:60px; align-items:center; padding:110px 56px; }
+  .v3 .eyebrow { color:#d4b055; }
+  .v3 h1 { font-size:clamp(44px,5.8vw,80px); line-height:1.03; }
+  .v3 h1 em { color:#d4b055; font-style:italic; }
+  .v3 .sub { max-width:430px; color:rgba(244,241,234,.72); font-size:17px; margin-top:22px; }
+  .v3 .cta { margin-top:30px; display:inline-block; border:1px solid #d4b055; color:#d4b055; font:500 13px "DM Mono",monospace; padding:12px 22px; text-decoration:none; letter-spacing:.04em; }
+  .v3 .portrait { margin:0; }
+  .v3 .portrait img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center top; border-radius:50% 50% 4px 4px; box-shadow:0 30px 60px -18px rgba(0,0,0,.55); }
+
+  /* V4 · Giant headline, no photo */
+  .v4 { display:flex; flex-direction:column; min-height:100vh; padding:120px 56px 60px; }
+  .v4 .topline { display:flex; justify-content:space-between; color:var(--muted); font:12px "DM Mono",monospace; letter-spacing:.06em; text-transform:uppercase; }
+  .v4 h1 { font-size:clamp(56px,9.5vw,140px); line-height:1.0; margin-top:auto; }
+  .v4 h1 .hi { font-size:.42em; font-weight:400; color:var(--muted); letter-spacing:0; display:block; margin-bottom:18px; font-family:"DM Mono",monospace; }
+  .v4 h1 em { color:var(--gold); font-style:italic; }
+  .v4 .bottom { margin-top:48px; display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid var(--line); padding-top:26px; color:var(--muted); font-size:15px; }
+  .v4 .bottom a { color:var(--gold); font:500 13px "DM Mono",monospace; text-decoration:none; display:inline-block; }
+
+  /* V5 · Photo bleed */
+  .v5 { display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,1.05fr); position:relative; padding:0; }
+  .v5 .left { padding:120px 56px; display:flex; flex-direction:column; justify-content:center; }
+  .v5 h1 { font-size:clamp(44px,5.4vw,74px); line-height:1.03; }
+  .v5 h1 em { color:var(--gold); font-style:italic; }
+  .v5 .sub { max-width:420px; color:var(--muted); font-size:17px; margin-top:22px; }
+  .v5 .cta { margin-top:30px; }
+  .v5 .cta a { color:var(--gold); font:500 15px "DM Mono",monospace; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; }
+  .v5 .photo { margin:0; position:relative; overflow:hidden; }
+  .v5 .photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .v5 .photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(244,241,234,.55), rgba(23,33,31,.28)); }
+
+  /* V6 · Watermark monogram + circular portrait */
+  .v6 { position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; padding:120px 40px 84px; }
+  .v6 .wm { position:absolute; top:6%; left:50%; transform:translateX(-50%); font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:clamp(120px,20vw,300px); color:rgba(156,122,31,.14); line-height:1; pointer-events:none; user-select:none; }
+  .v6 .mono { margin:0 0 26px; color:var(--gold); font:12px "DM Mono",monospace; letter-spacing:.16em; text-transform:uppercase; }
+  .v6 h1 { font-size:clamp(40px,5vw,68px); line-height:1.06; position:relative; }
+  .v6 h1 em { color:var(--gold); font-style:italic; }
+  .v6 .sub { max-width:500px; color:var(--muted); font-size:17px; margin-top:20px; position:relative; }
+  .v6 .avatar { margin:48px auto 0; width:150px; height:150px; border-radius:50%; overflow:hidden; border:1px solid var(--line); padding:7px; background:#fff; position:relative; box-shadow:0 18px 36px -18px rgba(23,33,31,.35); }
+  .v6 .avatar img { width:100%; height:100%; object-fit:cover; object-position:center top; border-radius:50%; display:block; }
+
+  /* V7 · Two-tone diagonal split */
+  .v7 { position:relative; display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,1fr); min-height:100vh; overflow:hidden; }
+  .v7 .ink { position:absolute; top:-12%; right:-14%; width:60%; height:124%; background:var(--ink); transform:skewX(-9deg); }
+  .v7 .left { position:relative; padding:120px 56px; z-index:1; display:flex; flex-direction:column; justify-content:center; }
+  .v7 h1 { font-size:clamp(44px,5.6vw,78px); line-height:1.02; }
+  .v7 h1 em { color:var(--gold); font-style:italic; }
+  .v7 .sub { max-width:420px; color:var(--muted); font-size:17px; margin-top:22px; }
+  .v7 .cta { margin-top:30px; }
+  .v7 .cta a { color:var(--gold); font:500 15px "DM Mono",monospace; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; }
+  .v7 .right { position:relative; z-index:1; display:flex; align-items:center; justify-content:flex-start; padding:0 56px; }
+  .v7 .face { width:min(340px,90%); aspect-ratio:4/5; overflow:hidden; outline:1px solid rgba(212,176,85,.55); outline-offset:10px; }
+  .v7 .face img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+  .v7 .cap { margin-top:34px; color:rgba(244,241,234,.6); font:11px "DM Mono",monospace; letter-spacing:.12em; text-transform:uppercase; }
+
+  /* V8 · Marquee ticker */
+  .v8 { display:flex; flex-direction:column; justify-content:center; overflow:hidden; padding:110px 0 70px; }
+  .v8 .eyebrow { padding:0 56px; }
+  .v8 .ticker { margin:26px 0; overflow:hidden; }
+  .v8 .ticker .band { display:flex; white-space:nowrap; width:max-content; animation:slide 22s linear infinite; }
+  .v8 .ticker span { font-family:"Playfair Display",serif; font-weight:700; font-size:clamp(64px,10vw,150px); line-height:1; color:var(--ink); padding:0 0.35em; }
+  .v8 .ticker .star { color:var(--gold); font-style:italic; }
+  @keyframes slide { to { transform:translateX(-50%); } }
+  .v8 .foot { padding:0 56px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .v8 .foot p { max-width:420px; color:var(--muted); font-size:16px; margin:0; }
+  .v8 .foot a { color:var(--gold); font:500 13px "DM Mono",monospace; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; }
+
+  /* V9 · Photo left (mirror of 01) */
+  .v9 { display:grid; grid-template-columns:minmax(230px,1fr) minmax(0,3fr); gap:68px; align-items:end; padding:110px 56px 80px; }
+  .v9 .portrait { margin:0; order:0; }
+  .v9 .portrait img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center top; box-shadow:0 28px 50px -16px rgba(23,33,31,.32); }
+  .v9 .text { order:1; }
+  .v9 h1 { font-size:clamp(44px,5.6vw,76px); line-height:1.02; }
+  .v9 h1 em { color:var(--gold); font-style:italic; }
+  .v9 .foot { margin-top:34px; max-width:480px; color:var(--muted); font-size:17px; }
+  .v9 .cta { margin-top:26px; }
+  .v9 .cta a { color:var(--gold); font:500 15px "DM Mono",monospace; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; }
+
+  /* V10 · Photo bleed left (mirror of 05) */
+  .v10 { display:grid; grid-template-columns:minmax(320px,1.05fr) minmax(0,1fr); position:relative; padding:0; }
+  .v10 .photo { margin:0; position:relative; overflow:hidden; order:0; }
+  .v10 .photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .v10 .photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(23,33,31,.28), rgba(244,241,234,.55)); }
+  .v10 .right { padding:120px 56px; display:flex; flex-direction:column; justify-content:center; order:1; }
+  .v10 h1 { font-size:clamp(44px,5.4vw,74px); line-height:1.03; }
+  .v10 h1 em { color:var(--gold); font-style:italic; }
+  .v10 .sub { max-width:420px; color:var(--muted); font-size:17px; margin-top:22px; }
+  .v10 .cta { margin-top:30px; }
+  .v10 .cta a { color:var(--gold); font:500 15px "DM Mono",monospace; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; }
+
+  .spacer { height:28px; }
+</style>
+</head>
+<body>
+<div class="bar"><b>INTRO / HERO</b> layout mockups &nbsp;·&nbsp; scroll through the four options</div>
+
+<section class="mock v1"><p class="tag">01 · Asymmetrical — current layout</p>
+  <div>
+    <p class="eyebrow">Software developer · Aspiring Product Owner <br />Ho Chi Minh City, Vietnam</p>
+    <h1>Hi, I’m <br /><em>Kyaw Htut Naing</em>.<br />You can call me <em>Andrew</em>.</h1>
+    <p class="foot">I build reliable applications and integrations with a focus on useful, human-centred outcomes.</p>
+    <p class="cta"><a href="#">Let’s connect ↘</a></p>
+  </div>
+  <figure class="portrait"><img src="profile.jpg" alt="portrait" /></figure>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v2"><p class="tag">02 · Centered editorial — framed portrait</p>
+  <p class="eyebrow">Software developer · Ho Chi Minh City, Vietnam</p>
+  <h1>Hi, I’m <em>Kyaw Htut Naing</em>.</h1>
+  <p class="sub">Most people call me Andrew. I build reliable applications and integrations with a focus on useful, human-centred outcomes.</p>
+  <figure class="portrait"><img src="profile.jpg" alt="portrait" /></figure>
+  <p class="mono">Software developer — Aspiring Product Owner</p>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v3"><p class="tag">03 · Dark full-bleed — ink background</p>
+  <div>
+    <p class="eyebrow">Software developer · Aspiring Product Owner · Ho Chi Minh City, Vietnam</p>
+    <h1>Hi, I’m <em>Kyaw Htut Naing</em>.<br />Call me <em>Andrew</em>.</h1>
+    <p class="sub">I build reliable applications and integrations with a focus on useful, human-centred outcomes.</p>
+    <a class="cta" href="#">Let’s connect ↘</a>
+  </div>
+  <figure class="portrait"><img src="profile.jpg" alt="portrait" /></figure>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v4"><p class="tag">04 · Giant headline — photo later on the page</p>
+  <div class="topline"><span>D:/andrew/portfolio — v1.0</span><span>Ho Chi Minh City, VN</span></div>
+  <h1><span class="hi">Hi, I’m</span>Kyaw Htut <br />Naing</h1>
+  <div class="bottom"><span>Software developer · Aspiring Product Owner</span><a href="#">Let’s connect ↘</a></div>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v5"><p class="tag">05 · Photo bleed — text left, photo edge-to-edge right</p>
+  <div class="left">
+    <p class="eyebrow">Software developer · Aspiring Product Owner · Ho Chi Minh City, Vietnam</p>
+    <h1>Hi, I’m <em>Kyaw Htut Naing</em>.<br />Call me <em>Andrew</em>.</h1>
+    <p class="sub">I build reliable applications and integrations with a focus on useful, human-centred outcomes.</p>
+    <p class="cta"><a href="#">Let’s connect ↘</a></p>
+  </div>
+  <figure class="photo"><img src="profile.jpg" alt="portrait" /></figure>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v6"><p class="tag">06 · Watermark monogram — big KHN behind, circular portrait</p>
+  <span class="wm">KHN</span>
+  <p class="mono">Software developer — Aspiring Product Owner</p>
+  <h1>Hi, I’m <em>Kyaw Htut Naing</em>.<br />Call me <em>Andrew</em>.</h1>
+  <p class="sub">I build reliable applications and integrations with a focus on useful, human-centred outcomes.</p>
+  <div class="avatar"><img src="profile.jpg" alt="portrait" /></div>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v7"><p class="tag">07 · Two-tone diagonal — ink wedge behind a gold-framed portrait</p>
+  <div class="ink"></div>
+  <div class="left">
+    <p class="eyebrow">Aspiring Product Owner · Ho Chi Minh City, Vietnam</p>
+    <h1>Kyaw Htut <br />Naing</h1>
+    <p class="sub">Software developer building reliable applications and integrations with a focus on useful, human-centred outcomes. You can call me Andrew.</p>
+    <p class="cta"><a href="#">Let’s connect ↘</a></p>
+  </div>
+  <div class="right">
+    <div><div class="face"><img src="profile.jpg" alt="portrait" /></div>
+    <p class="cap">Kyaw Htut Naing — Andrew</p></div>
+  </div>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v8"><p class="tag">08 · Marquee ticker — name scrolling across the hero</p>
+  <p class="eyebrow">Software developer · Aspiring Product Owner · Ho Chi Minh City, Vietnam</p>
+  <div class="ticker"><div class="band">
+    <span>Kyaw Htut Naing</span><span class="star">·</span><span>Kyaw Htut Naing</span><span class="star">·</span><span>Kyaw Htut Naing</span><span class="star">·</span>
+  </div></div>
+  <div class="foot"><p>I build reliable applications and integrations with a focus on useful, human-centred outcomes. You can call me Andrew.</p><a href="#">Let’s connect ↘</a></div>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v9"><p class="tag">09 · Photo left — mirror of the current layout</p>
+  <figure class="portrait"><img src="profile.jpg" alt="portrait" /></figure>
+  <div class="text">
+    <p class="eyebrow">Software developer · Aspiring Product Owner <br />Ho Chi Minh City, Vietnam</p>
+    <h1>Hi, I’m <br /><em>Kyaw Htut Naing</em>.<br />You can call me <em>Andrew</em>.</h1>
+    <p class="foot">I build reliable applications and integrations with a focus on useful, human-centred outcomes.</p>
+    <p class="cta"><a href="#">Let’s connect ↘</a></p>
+  </div>
+</section>
+<div class="spacer"></div>
+
+<section class="mock v10"><p class="tag">10 · Photo bleed left — edge-to-edge photo, text right</p>
+  <figure class="photo"><img src="profile.jpg" alt="portrait" /></figure>
+  <div class="right">
+    <p class="eyebrow">Software developer · Aspiring Product Owner · Ho Chi Minh City, Vietnam</p>
+    <h1>Hi, I’m <em>Kyaw Htut Naing</em>.<br />Call me <em>Andrew</em>.</h1>
+    <p class="sub">I build reliable applications and integrations with a focus on useful, human-centred outcomes.</p>
+    <p class="cta"><a href="#">Let’s connect ↘</a></p>
+  </div>
+</section>
+</body>
+</html>
